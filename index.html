@@ -1936,6 +1936,34 @@ const url =
 window.open(url,"_blank");
 
 });
+  function sendWhatsApp(){
+
+const name =
+document.querySelector('input[name="name"]').value;
+
+const phone =
+document.querySelector('input[name="phone"]').value;
+
+const grade =
+document.querySelector('select[name="grade"]').value;
+
+const message =
+document.querySelector('textarea[name="message"]').value;
+
+const text =
+`Заявка с сайта ЖЕТЫСУ БЕТОН+
+Имя: ${name}
+Телефон: ${phone}
+Марка бетона: ${grade}
+Комментарий: ${message}`;
+
+const url =
+"https://wa.me/77477171889?text="
++ encodeURIComponent(text);
+
+window.open(url,"_blank");
+
+}
 </script>
 </body>
 </html>
