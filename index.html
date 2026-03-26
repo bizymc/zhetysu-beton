@@ -1777,7 +1777,7 @@
             <label>Комментарий</label>
             <textarea placeholder="Опишите ваш объект или задайте вопрос..."></textarea>
           </div>
-          <button type="submit" class="form-submit">
+          <button type="button" class="form-submit" onclick="sendWhatsApp()">
             Отправить заявку
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -1905,6 +1905,37 @@
       }
     });
   });
+  document.querySelector(".form-submit").addEventListener("click", function(e){
+
+e.preventDefault();
+
+const inputs = document.querySelectorAll("#contacts input, #contacts textarea, #contacts select");
+
+let name = "";
+let phone = "";
+let grade = "";
+let message = "";
+
+inputs.forEach(i=>{
+ if(i.name=="name") name=i.value;
+ if(i.name=="phone") phone=i.value;
+ if(i.name=="grade") grade=i.value;
+ if(i.name=="message") message=i.value;
+});
+
+const text =
+`Заявка с сайта ЖЕТЫСУ БЕТОН+
+Имя: ${name}
+Телефон: ${phone}
+Марка: ${grade}
+Комментарий: ${message}`;
+
+const url =
+"https://wa.me/77477171889?text="+encodeURIComponent(text);
+
+window.open(url,"_blank");
+
+});
 </script>
 </body>
 </html>
